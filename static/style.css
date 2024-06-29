@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0e0e0e;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    animation: glitch-animation 15s infinite;
+}
+
+@keyframes glitch-animation {
+    0% {
+        background-color: #0e0e0e;
+        transform: skew(0deg);
+    }
+    10% {
+        background-color: #1b1b1b;
+        transform: skew(-1deg);
+    }
+    20% {
+        background-color: #0e0e0e;
+        transform: skew(1deg);
+    }
+    30% {
+        background-color: #1b1b1b;
+        transform: skew(0deg);
+    }
+    100% {
+        background-color: #0e0e0e;
+        transform: skew(0deg);
+    }
+}
+
+/* Efecto de interferencia */
+body::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Ajusta la posición vertical para controlar la altura del ruido */
+    left: -10px; /* Ajusta la posición horizontal para controlar el ancho del ruido */
+    width: calc(100% + 20px); /* Aumenta el ancho para cubrir completamente la pantalla */
+    height: calc(100% + 80px); /* Aumenta la altura para cubrir completamente la pantalla */
+    background: linear-gradient(90deg, rgba(0,255,0,0.1) 0%, rgba(0,255,0,0.1) 10%, transparent 50%, transparent 90%, rgba(0,255,0,0.1) 100%);
+    z-index: -1;
+    animation: noise 3s cubic-bezier(.5, .2, .5, .8) infinite;
+}
+
+@keyframes noise {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transform: translate3d(-2px, -2px, 0); /* Movimiento lateral reducido */
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate3d(2px, 2px, 0); /* Movimiento lateral reducido */
+    }
+}
+
+/*HEADER*/
+
+header {
+    
+    background-color: #1b1b1b;
+box-shadow: -3px 20px 20px 7px #0000ff, -20px 15px 0px 9px #ff00cc; /* Sombras en el header*/
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    width: 300px; /* Ajusta según necesites */
+    position: fixed;
+    }
+
+/*Header-Nav*/
+
+
+.cyberpunkNav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; 
+    flex-direction:column;
+    
+}
+
+.cyberpunkNav li {
+    margin: 0 20px;
+    text-shadow: 10px 10px 4px rgb(143, 143, 143),
+    4px 4px 6px rgba(99, 255, 104, 0.901);
+    
+   
+}
+
+.cyberpunkNav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 20px 0;
+    display: block;
+    position: relative;
+}
+
+.cyberpunkNav a::before,
+.cyberpunkNav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ff00ff;
+    transition: transform 0.3s;
+    transform-origin: right;
+    transform: scaleX(0);
+}
+
+.cyberpunkNav a::before {
+    top: 0;
+    left: 0;
+    transform-origin: left;
+}
+
+.cyberpunkNav a::after {
+    bottom: 0;
+    right: 0;
+}
+
+.cyberpunkNav a:hover::before,
+.cyberpunkNav a:hover::after {
+    transform: scaleX(1);
+}
+
+.cyberpunkNav a:hover {
+    color: #ff00ff;
+}
+
+/*Usar flex con nav y footer
+el resto con grid*/
+main {
+    grid-column: 3 / 8;
+    grid-row: 2 / 8;
+    padding: 20px;
+    background-color: #1b1b1b;
+    border: 2px solid #00ff00;
+    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido excede */
+    font-size: 1.2em;
+    line-height: 1.5;
+    
+    box-shadow: -3px 20px 20px 7px #0000ff, -20px 15px 0px 9px #ff00cc;
+    color: #4cff00;
+    font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada */
+            letter-spacing: 1px; /* Espaciado entre letras */
+            text-shadow: 0 0 5px rgba(76, 255, 0, 0.5);
+            text-align: left;
+            animation: glitch-text 30s infinite;
+
+}
+@keyframes glitch-text {
+    0% {
+        transform: translate(0);
+        opacity: 1;
+    }
+    25% {
+        transform: translate(-2px, 2px);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(2px, -2px);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translate(-2px, 2px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
+
+/* Estilo de texto para un efecto cyberpunk */
+main p {
+    margin: 0 0 15px; /* Espacio entre párrafos */
+}
+
+main p:last-child {
+    margin-bottom: 0; /* Elimina el espacio después del último párrafo */
+}
+
+/* Efecto de texto brillante */
+main .highlight {
+    color: #00ff00; /* Color de texto brillante */
+    text-shadow: 0 0 10px #00ff00; /* Sombra brillante */
+}
