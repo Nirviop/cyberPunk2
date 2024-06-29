@@ -187,3 +187,22 @@ main .highlight {
     color: #00ff00; /* Color de texto brillante */
     text-shadow: 0 0 10px #00ff00; /* Sombra brillante */
 }
+
+#cursor {
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+    background-color: #00ff00;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    from, to {
+        background-color: transparent;
+    }
+    50% {
+        background-color: #00ff00;
+    }
+}
