@@ -7,6 +7,7 @@ body {
     grid-template-columns: repeat(9, 1fr);
     grid-auto-rows: minmax(100px, auto);
     animation: glitch-animation 15s infinite;
+    overflow-x: hidden;
 }
 
 @keyframes glitch-animation {
@@ -137,7 +138,7 @@ main {
     padding: 20px;
     background-color: #1b1b1b;
     border: 2px solid #00ff00;
-    overflow-y: auto; /* Permite el desplazamiento vertical si el contenido excede */
+    
     font-size: 1.2em;
     line-height: 1.5;
     
@@ -148,6 +149,7 @@ main {
             text-shadow: 0 0 5px rgba(76, 255, 0, 0.5);
             text-align: left;
             animation: glitch-text 30s infinite;
+            max-height: calc(100vh - 400px);
 
 }
 @keyframes glitch-text {
@@ -188,21 +190,23 @@ main .highlight {
     text-shadow: 0 0 10px #00ff00; /* Sombra brillante */
 }
 
-#cursor {
-    display: inline-block;
-    width: 1px;
-    height: 1em;
-    background-color: #00ff00;
-    animation: blink 1s step-end infinite;
-    margin-left: 2px;
-    vertical-align: middle;
-}
 
-@keyframes blink {
-    from, to {
-        background-color: transparent;
-    }
-    50% {
-        background-color: #00ff00;
-    }
+
+textarea#userInput {
+    width: -webkit-fill-available; /* Ajusta el ancho para que coincida con el padding de main */
+    height: -webkit-fill-available; /* Ajusta la altura para que coincida con el padding de main */
+    background-color: #1b1b1b;
+    color: #4cff00;
+    border: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    line-height: 1.5;
+    padding: 10px;
+    resize: none; /* Desactiva el redimensionamiento */
+    margin: 0 0 15px;
+    box-shadow: inset 0 0 10px #00ff00;
+    outline: none; /* Elimina el borde al enfocar */
+    text-shadow: 0 0 10px #00ff00; /* Sombra brillante */
+    letter-spacing: 1px;
+    text-align: left;
 }
